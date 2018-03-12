@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Xaringan example</title>
-    <meta charset="utf-8">
-    <meta name="author" content="Christopher Chizinski" />
-    <script src="https://use.fontawesome.com/5235085b15.js"></script>
-    <link rel="stylesheet" href="css/unlsnr.css" type="text/css" />
-    <link rel="stylesheet" href="css/unlsnr-fonts.css" type="text/css" />
-  </head>
-  <body>
-    <textarea id="source">
-class: center, middle, inverse, title-slide
-
-# Xaringan example
-## SNR template
-### Christopher Chizinski
-### University of Nebraska-Lincoln </br> 2018-03-12
-
+---
+title: "Xaringan example"
+subtitle: "SNR template"
+author: "Christopher Chizinski"
+date: "University of Nebraska-Lincoln </br> `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["css/unlsnr.css", "css/unlsnr-fonts.css"]
+    nature:
+      beforeInit: ["https://www.jvcasillas.com/ru_xaringan/js/ru_xaringan.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: "libs/partials/header.html"
 ---
 
-
-
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
 
 background-size: 100%
 background-image: url(https://media.giphy.com/media/94iS62lx8CRQA/giphy.gif)
@@ -43,22 +42,19 @@ Image test. Taken from google.
 | :---------- | -------------------------- | ---------------------- |
 | casa        | /ˈka.sa/                   | [ˈka.sa]               |
 | taco (Sp.)  | /ˈta.ko/                   | [ˈta.ko]               |
-| taco (Eng.) | /ˈta.ko/                   | [ˈt&lt;sup&gt;h&lt;/sup&gt;a.ko]   |
+| taco (Eng.) | /ˈta.ko/                   | [ˈt<sup>h</sup>a.ko]   |
 
 
 ---
 
 # Standard slide with R code
 
-
-```r
+```{r, fig.height=4.5, fig.width=12, fig.retina=2, fig.align='center', message=FALSE, warning=FALSE}
 library(tidyverse)
 ggplot(cars, aes(x = dist, y = speed)) + 
   geom_point() + 
-* geom_smooth(method = 'lm', formula = y ~ poly(x, 2)) # we can highlight lines of code 
+{{ geom_smooth(method = 'lm', formula = y ~ poly(x, 2))}} # we can highlight lines of code 
 ```
-
-&lt;img src="index_files/figure-html/unnamed-chunk-1-1.png" width="864" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -68,12 +64,12 @@ ggplot(cars, aes(x = dist, y = speed)) +
   - can be created using "-"
   - and they can be nested using 2 or 4 spaces
 - We can also make `blockquotes`
-  - we can use `&lt;ru-blockquote&gt;text&lt;/ru-blockquote&gt;` 
-  - or `&gt;`
+  - we can use `<ru-blockquote>text</ru-blockquote>` 
+  - or `>`
 
-&lt;ru-blockquote&gt;This is a blocked quote&lt;/ru-blockquote&gt;
+<ru-blockquote>This is a blocked quote</ru-blockquote>
 
-- Footnotes&lt;sup&gt;1&lt;/sup&gt;
+- Footnotes<sup>1</sup>
 
 .footnote[
 [1] Information here.
@@ -110,7 +106,7 @@ sentence with
 separation.
 
 ---
-background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2/karl-moustache.jpg)
+background-image: url(`r xaringan:::karl`)
 background-position: 50% 50%
 class: center, bottom, inverse
 
@@ -232,21 +228,16 @@ This is invalid R code, so it is a plain fenced code block that is not executed.
 .pull-right[
 An example using `{{}}`:
 
-    ```{r tidy=FALSE}
+    `r ''````{r tidy=FALSE}
     if (TRUE) {
     *{{ message("Very important!") }}
     }
     ```
 Output:
-
-```r
+```{r tidy=FALSE}
 if (TRUE) {
-* message("Very important!") 
+{{ message("Very important!") }}
 }
-```
-
-```
-## Very important!
 ```
 
 It is valid R code so you can run it.
@@ -257,9 +248,9 @@ class: middle, bottom
 background-image: url(http://www.jvcasillas.com/ru_xaringan/img/logo/ru_shield.png)
 background-size: contain
 
-### &lt;grey&gt;You can&lt;/grey&gt;  
-### &lt;grey&gt;fill the&lt;/grey&gt;  
-### &lt;grey&gt;screen with &lt;/grey&gt;  
+### <grey>You can</grey>  
+### <grey>fill the</grey>  
+### <grey>screen with </grey>  
 ### **background-size: contain**
 
 ---
@@ -272,7 +263,7 @@ background-size: contain
 ```js
 remark.macros.scale = function (percentage) {
   var url = this;
-  return '&lt;img src="' + url + '" style="width: ' + percentage + '" /&gt;';
+  return '<img src="' + url + '" style="width: ' + percentage + '" />';
 };
 ```
 
@@ -284,9 +275,9 @@ remark.macros.scale = function (percentage) {
 
 - These calls can also be put inside html divs so as to control where they appear. 
 
-&lt;div align="center"&gt;
+<div align="center">
 ![:scale 20%](../img/logo/ru_shield2.png)
-&lt;/div&gt;
+</div>
 
 - All we need to do is include `beforeInit: "macros.js"` under nature in our YAML front matter
 
@@ -299,7 +290,7 @@ remark.macros.scale = function (percentage) {
 - The theme was designed to work with a 16:9 aspect ratio
 - Set the aspect ratio under the **nature** output parameter...  
     nature:  
-      &amp;nbsp; &amp;nbsp; ratio: "16:9"
+      &nbsp; &nbsp; ratio: "16:9"
 
 
 ### Sections
@@ -396,46 +387,8 @@ Here is an example:
 
 |                                                                                                            |                                   |
 | :--------------------------------------------------------------------------------------------------------- | :-------------------------------- |
-| &lt;a href="mailto:joseph.casillas@rutgers.edu"&gt;.RUred[&lt;i class="fa fa-paper-plane fa-fw"&gt;&lt;/i&gt;]               | joseph.casillas@rutgers.edu       |
-| &lt;a href="http://www.jvcasillas.com/ru_xaringan/slides/index.html"&gt;.RUred[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | jvcasillas.com/ru_xaringan/slides |
-| &lt;a href="http://twitter.com/jvcasill"&gt;.RUred[&lt;i class="fa fa-twitter fa-fw"&gt;&lt;/i&gt;]                          | @jvcasill                         |
-| &lt;a href="http://github.com/jvcasillas"&gt;.RUred[&lt;i class="fa fa-github fa-fw"&gt;&lt;/i&gt;]                          | @jvcasillas                       |
-    </textarea>
-<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script src="https://www.jvcasillas.com/ru_xaringan/js/ru_xaringan.js"></script>
-<script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "16:9"
-});
-if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
-  window.dispatchEvent(new Event('resize'));
-});
-(function() {
-  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
-  if (!r) return;
-  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
-  d.head.appendChild(s);
-})();</script>
+| <a href="mailto:joseph.casillas@rutgers.edu">.RUred[<i class="fa fa-paper-plane fa-fw"></i>]               | joseph.casillas@rutgers.edu       |
+| <a href="http://www.jvcasillas.com/ru_xaringan/slides/index.html">.RUred[<i class="fa fa-link fa-fw"></i>] | jvcasillas.com/ru_xaringan/slides |
+| <a href="http://twitter.com/jvcasill">.RUred[<i class="fa fa-twitter fa-fw"></i>]                          | @jvcasill                         |
+| <a href="http://github.com/jvcasillas">.RUred[<i class="fa fa-github fa-fw"></i>]                          | @jvcasillas                       |
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-  }
-});
-</script>
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-(function () {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
-  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
-    script.src  = script.src.replace(/^https?:/, '');
-  document.getElementsByTagName('head')[0].appendChild(script);
-})();
-</script>
-  </body>
-</html>

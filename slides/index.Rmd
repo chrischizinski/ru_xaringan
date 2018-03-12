@@ -1,12 +1,12 @@
 ---
 title: "Xaringan example"
-subtitle: "RU template"
-author: "Joseph V. Casillas"
-date: "Rutgers University </br> `r Sys.Date()`"
+subtitle: "SNR template"
+author: "Christopher Chizinski"
+date: "University of Nebraska-Lincoln </br> `r Sys.Date()`"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: ["https://www.jvcasillas.com/ru_xaringan/css/rutgers.css", "https://www.jvcasillas.com/ru_xaringan/css/rutgers-fonts.css"]
+    css: ["css/unlsnr.css", "css/unlsnr-fonts.css"]
     nature:
       beforeInit: ["https://www.jvcasillas.com/ru_xaringan/js/ru_xaringan.js"]
       highlightStyle: github
